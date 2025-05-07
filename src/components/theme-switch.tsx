@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 export function ThemeSwitch() {
-  const { theme, setTheme } = useTheme()
+  const { theme, direction, setTheme , setDirection } = useTheme()
 
   /* Update theme-color meta tag
    * when theme is updated */
@@ -22,6 +22,7 @@ export function ThemeSwitch() {
   }, [theme])
 
   return (
+ <>
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant='ghost' size='icon' className='scale-95 rounded-full'>
@@ -54,5 +55,29 @@ export function ThemeSwitch() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+       <DropdownMenu modal={false}>
+      <DropdownMenuTrigger asChild>
+        <Button variant='ghost' size='icon' className='scale-95 rounded-full'>
+          {direction.toUpperCase()}
+          <span className='sr-only'>Toggle Dir</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align='end'>
+        <DropdownMenuItem onClick={() => setDirection('ltr')}>
+          English{' '}
+          <IconCheck
+            size={14}
+            className={cn('ml-auto', direction !== 'ltr' && 'hidden')}
+          />
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setDirection('rtl')}>
+          Arabic
+          <IconCheck
+            size={14}
+            className={cn('ml-auto', direction !== 'rtl' && 'hidden')}
+          />
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu></>
   )
 }

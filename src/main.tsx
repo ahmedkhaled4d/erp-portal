@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: (failureCount, error) => {
-        // eslint-disable-next-line no-console
+         
         if (import.meta.env.DEV) console.log({ failureCount, error })
 
         if (failureCount >= 0 && import.meta.env.DEV) return false
@@ -89,7 +89,7 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
+        <ThemeProvider defaultTheme='light' defaultDirection='ltr' storageKey='vite-ui-theme'>
           <FontProvider>
             <RouterProvider router={router} />
           </FontProvider>

@@ -21,6 +21,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { useTheme } from '@/context/theme-context'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state'
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -149,19 +150,19 @@ function SidebarProvider({
 }
 
 function Sidebar({
-  side = 'left',
+ 
   variant = 'sidebar',
   collapsible = 'offcanvas',
   className,
   children,
   ...props
 }: React.ComponentProps<'div'> & {
-  side?: 'left' | 'right'
-  variant?: 'sidebar' | 'floating' | 'inset'
+   variant?: 'sidebar' | 'floating' | 'inset'
   collapsible?: 'offcanvas' | 'icon' | 'none'
 }) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
-
+  const {  direction } = useTheme()
+  const side = direction === 'ltr' ? 'left' : 'right'
   if (collapsible === 'none') {
     return (
       <div
@@ -190,7 +191,7 @@ function Sidebar({
               '--sidebar-width': SIDEBAR_WIDTH_MOBILE,
             } as React.CSSProperties
           }
-          side={side}
+          side={side} 
         >
           <SheetHeader className='sr-only'>
             <SheetTitle>Sidebar</SheetTitle>

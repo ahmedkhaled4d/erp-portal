@@ -14,7 +14,7 @@ function RouteComponent() {
   const defaultOpen = Cookies.get('sidebar_state') !== 'false'
   return (
     <SearchProvider>
-      <SidebarProvider defaultOpen={defaultOpen}>
+      <SidebarProvider  defaultOpen={defaultOpen}>
         <SkipToMain />
         <AppSidebar />
         <div
