@@ -1,21 +1,67 @@
-# React + TypeScript + Vite
+# Shadcn Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Admin Dashboard UI crafted with Shadcn and Vite. Built with responsiveness and accessibility in mind.
 
-While this project uses React, Vite supports many popular JS frameworks. [See all the supported frameworks](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+![alt text](public/images/shadcn-admin.png)
 
-## Deploy Your Own
+I've been creating dashboard UIs at work and for my personal projects. I always wanted to make a reusable collection of dashboard UI for future projects; and here it is now. While I've created a few custom components, some of the code is directly adapted from ShadcnUI examples.
 
-Deploy your own Vite project with Vercel.
+> This is not a starter project (template) though. I'll probably make one in the future.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/framework-boilerplates/vite-react&template=vite-react)
+## Features
 
-_Live Example: https://vite-react-example.vercel.app_
+- Light/dark mode
+- Responsive
+- Accessible
+- With built-in Sidebar component
+- Global Search Command
+- 10+ pages
+- Extra custom components
 
-### Deploying From Your Terminal
+## Tech Stack
 
-You can deploy your new Vite project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
+**UI:** [ShadcnUI](https://ui.shadcn.com) (TailwindCSS + RadixUI)
 
-```shell
-$ vercel
+**Build Tool:** [Vite](https://vitejs.dev/)
+
+**Routing:** [TanStack Router](https://tanstack.com/router/latest)
+
+**Type Checking:** [TypeScript](https://www.typescriptlang.org/)
+
+**Linting/Formatting:** [Eslint](https://eslint.org/) & [Prettier](https://prettier.io/)
+
+**Icons:** [Tabler Icons](https://tabler.io/icons)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/ahmedkhaled4d/shadcn-admin.git
 ```
+
+Go to the project directory
+
+```bash
+  cd shadcn-admin
+```
+
+Install dependencies
+
+```bash
+  pnpm install
+```
+
+Start the server
+
+```bash
+  pnpm run dev
+```
+
+## Author
+
+Crafted with 🤍 by [@ahmedkhaled4d](https://github.com/ahmedkhaled4d)
+
+## License
+
+Licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
