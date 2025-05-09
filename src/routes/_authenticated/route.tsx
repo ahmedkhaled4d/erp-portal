@@ -5,16 +5,21 @@ import { SearchProvider } from '@/context/search-context'
 import { SidebarProvider } from '@/components/ui/sidebar'
 import { AppSidebar } from '@/components/layout/app-sidebar'
 import SkipToMain from '@/components/skip-to-main'
+import { ProtectedRoute } from '../__root'
 
 export const Route = createFileRoute('/_authenticated')({
-  component: RouteComponent,
+  component: () => (
+    <ProtectedRoute>
+      <RouteComponent />
+    </ProtectedRoute>
+  ),
 })
 
 function RouteComponent() {
   const defaultOpen = Cookies.get('sidebar_state') !== 'false'
   return (
     <SearchProvider>
-      <SidebarProvider  defaultOpen={defaultOpen}>
+      <SidebarProvider defaultOpen={defaultOpen}>
         <SkipToMain />
         <AppSidebar />
         <div
