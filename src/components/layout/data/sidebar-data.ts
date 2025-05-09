@@ -50,7 +50,7 @@ export const sidebarData: SidebarData = {
       title: 'General',
       items: [
         {
-          title: 'Dashboard',
+          title: 'لوحة التحكم',
           url: '/',
           icon: IconLayoutDashboard,
         },
