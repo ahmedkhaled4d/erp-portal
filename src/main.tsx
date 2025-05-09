@@ -10,17 +10,19 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { toast } from 'sonner'
 import { useAuthStore } from '@/stores/authStore'
 import { handleServerError } from '@/utils/handle-server-error'
+import './config/i18n'
 import { FontProvider } from './context/font-context'
 import { ThemeProvider } from './context/theme-context'
 import './index.css'
 // Generated Routes
 import { routeTree } from './routeTree.gen'
 
+// Import i18n configuration
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: (failureCount, error) => {
-         
         if (import.meta.env.DEV) console.log({ failureCount, error })
 
         if (failureCount >= 0 && import.meta.env.DEV) return false
@@ -89,7 +91,11 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider defaultTheme='light' defaultDirection='ltr' storageKey='vite-ui-theme'>
+        <ThemeProvider
+          defaultTheme='light'
+          defaultDirection='ltr'
+          storageKey='vite-ui-theme'
+        >
           <FontProvider>
             <RouterProvider router={router} />
           </FontProvider>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -17,6 +18,10 @@ import { Overview } from './components/overview'
 import { RecentSales } from './components/recent-sales'
 
 export default function Dashboard() {
+  const { t, i18n } = useTranslation()
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+  }
   return (
     <>
       {/* ===== Top Heading ===== */}
@@ -32,9 +37,10 @@ export default function Dashboard() {
       {/* ===== Main ===== */}
       <Main>
         <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='text-2xl font-bold tracking-tight'>Dashboard</h1>
+          <h1 className='text-2xl font-bold tracking-tight'>{t('welcome')} </h1>
           <div className='flex items-center space-x-2'>
-            <Button>Download</Button>
+            <Button onClick={() => changeLanguage('en')}>English</Button>
+            <Button onClick={() => changeLanguage('ar')}>عربي</Button>
           </div>
         </div>
         <Tabs
@@ -199,7 +205,7 @@ const topNav = [
     title: 'Customers',
     href: 'dashboard/customers',
     isActive: false,
-    disabled: true,
+    disabled: false,
   },
   {
     title: 'Products',
