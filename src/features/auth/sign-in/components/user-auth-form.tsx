@@ -2,7 +2,7 @@ import { HTMLAttributes, useState } from 'react'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Link } from '@tanstack/react-router'
+import { Link, useNavigate } from '@tanstack/react-router'
 import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
 import { toast } from 'sonner'
 import { useAuthStore } from '@/stores/authStore'
@@ -39,6 +39,7 @@ const formSchema = z.object({
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = useState(false)
   const { auth } = useAuthStore()
+  const navigate = useNavigate()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,14 +57,27 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       role: ['admin'],
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
     })
-    auth.setAccessToken('thisisjustarandomstring')
-    console.log(auth.user)
-
+    auth.setAccessToken('thisiACCESSsjustarandomstring')
     setTimeout(() => {
       setIsLoading(false)
-      toast.error('Content not modified!')
-    }, 3000)
+      toast.success('Content not modified!')
+      console.log(auth.user)
+      navigate({ to: '/' })
+    }, 2000)
   }
+  // useEffect(() => {
+  //   if (auth.user) {
+  //     console.log('User is already logged in:', auth.user)
+  //     const redirect = new URLSearchParams(window.location.search).get(
+  //       'redirect'
+  //     )
+  //     if (redirect) {
+  //       window.location.href = redirect
+  //     } else {
+  //       window.location.href = '/'
+  //     }
+  //   }
+  // }, [auth.user])
 
   return (
     <Form {...form}>

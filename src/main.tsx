@@ -17,8 +17,6 @@ import './index.css'
 // Generated Routes
 import { routeTree } from './routeTree.gen'
 
-// Import i18n configuration
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
